@@ -1,23 +1,27 @@
-#include "monty.h"
+#define _GNU_SOURCE
+#include "fac.h"
 
-itn main()
+int main(int argc, char **argv)
 {
-	long long int num = 239809320265259;
-	long int fac1 = 2;
-	long int fac2;
+	FILE *fptr;
+	size_t count;
+	ssize_t line;
+	char *buffer = NULL;
 
-	while (num % fac1)
+	if (argc != 2)
 	{
-		if (fac1 <= num)
-		{
-			fac1++;
-		}
-		else
-		{
-			return (-1);
-		}
+		fprintf(stderr,"Usage: facotr <filename>\n");
+		exit(EXIT_FAILURE);
 	}
-	fac2 = num / fac1;
-	printf("%lld = %ld * %ld\n", num, fact2, fac1);
+	fptr = fopen(argv[1], "r");
+	if (fptr == NULL)
+	{
+		fprintf(stderr, "Error: can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	while ((line = getline(&buffer, &count, fptr)) != -1)
+	{
+		factorize(buffer);
+	}
 	return (0);
 }
