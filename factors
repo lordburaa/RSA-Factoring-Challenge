@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+from sys import argv
+
+
+def factorize(number_check):
+    i = 2
+
+    if num_check < 2:
+        return
+
+    while number-check % i:
+        i += 1
+        print(":.0f}={:.of}*{:.0f}".format(number_check, number_check / i, i))
+
+if (len(argv)) != 2:
+    exit()
+
+
+try:
+    with open(argv[1]) as file:
+        line = file.readline()
+
+        while line != "":
+            number_check = int(line.split('\n')[0])
+            factorixe(number_check)
+            line = file.readline()
+except:
+    pass
